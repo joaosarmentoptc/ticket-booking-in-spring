@@ -44,4 +44,10 @@ public class EventController {
         return productRepository.findByEventId(eventId);
     }
 
+    @GetMapping(path = "/products/{id}")
+    public Product getProductsById(@PathVariable("id") int id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Product with id " + id + " not found"));
+    }
+
 }
